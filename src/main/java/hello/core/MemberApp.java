@@ -7,7 +7,10 @@ import hello.core.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService(); // DIP 충족 (추상, 구현, 주입을 모두 분리)
+        // MemberService memberService = new MemberServiceImpl(); // DIP 위반
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
